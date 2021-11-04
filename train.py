@@ -27,7 +27,6 @@ import random
 from torchvision.utils import make_grid
 from dataset import MultiDspritesLoader, TetrominoesLoader
 from imageio import get_writer
-import lpips
 
 
 """Parse input arguments"""
@@ -317,7 +316,10 @@ def train(train_dataloader, test_dataloader, logger, models, optimizers, FLAGS, 
 
     dev = torch.device("cuda")
 
-    loss_fn_vgg = lpips.LPIPS(net='vgg').cuda()
+    # Use LPIPS loss for CelebA-HQ 128x128
+    if FLAGS.dataset == "celebahq_128":
+        import lpips
+        loss_fn_vgg = lpips.LPIPS(net='vgg').cuda()
 
     for epoch in range(FLAGS.num_epoch):
         for im, idx in train_dataloader:
@@ -354,11 +356,11 @@ def train(train_dataloader, test_dataloader, logger, models, optimizers, FLAGS, 
             ml_loss = (energy_pos - energy_neg).mean()
 
             im_loss = torch.pow(im_negs[:, -1:] - im[:, None], 2).mean()
-            vgg_loss = loss_fn_vgg(im_negs[:, -1], im).mean()
 
-            if it < 10000:
+            if it < 10000 or FLAGS.dataset != "celebahq_128":
                 loss = im_loss
             else:
+                vgg_loss = loss_fn_vgg(im_negs[:, -1], im).mean()
                 loss = vgg_loss  + 0.1 * im_loss
 
             loss.backward()
@@ -380,7 +382,10 @@ def train(train_dataloader, test_dataloader, logger, models, optimizers, FLAGS, 
                 kvs['loss'] = loss
                 kvs['ml_loss'] = ml_loss.item()
                 kvs['im_loss'] = im_loss.item()
-                kvs['vgg_loss'] = vgg_loss.item()
+
+                if FLAGS.dataset == "celebahq_128":
+                    kvs['vgg_loss'] = vgg_loss.item()
+
                 kvs['energy_pos_mean'] = energy_pos_mean
                 kvs['energy_neg_mean'] = energy_neg_mean
                 kvs['energy_pos_std'] = energy_pos_std
