@@ -258,8 +258,8 @@ class LatentEBM128(nn.Module):
             self.conv1 = nn.Conv2d(3, filter_dim // 4, kernel_size=3, stride=1, padding=1, bias=True)
         self.avg_pool = nn.AvgPool2d(3, stride=2, padding=1)
 
-        self.gain = nn.Conv2d(args.latent_dim, filter_dim, kernel_size=3, stride=1, padding=1)
-        self.bias = nn.Conv2d(args.latent_dim, filter_dim, kernel_size=3, stride=1, padding=1)
+        self.gain = nn.Linear(args.latent_dim, filter_dim // 4)
+        self.bias = nn.Linear(args.latent_dim, filter_dim // 4)
 
         self.recurrent_model = args.recurrent_model
 
