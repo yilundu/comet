@@ -1,4 +1,4 @@
-# Unsupervised Learning of Compositional Energy Concepts (NeurIPS 2021)
+# Unsupervised Learning of Compositional Energy Concepts
 
 This is the pytorch code for the paper Unsupervised Learning of Compositional Energy Concepts.
 
