@@ -1,6 +1,6 @@
 # Unsupervised Learning of Compositional Energy Concepts
 
-This is the pytorch code for the paper Unsupervised Learning of Compositional Energy Concepts.
+This is the pytorch code for the paper [Unsupervised Learning of Compositional Energy Concepts](https://arxiv.org/abs/2111.03042).
 
 
 ## Demo
@@ -35,7 +35,7 @@ python train.py --exp=clevr_local_decomp --num_steps=5 --step_lr=1000.0 --compon
 
 # Dataset Download
 
-Please utilize the following [link](https://www.dropbox.com/s/1uk59q8aembfirp/images_clevr.tar.gz?dl=0) to download the CLEVR dataset utilized in our experiments. Downloads for additional datasetswill be posted soon. Feel free to raise an issue if there is a particular dataset you would like downloaded
+Please utilize the following [link](https://www.dropbox.com/s/1uk59q8aembfirp/images_clevr.tar.gz?dl=0) to download the CLEVR dataset utilized in our experiments. Downloads for additional datasets will be posted soon. Feel free to raise an issue if there is a particular dataset you would like downloaded
 
 # Citing our Paper
 
