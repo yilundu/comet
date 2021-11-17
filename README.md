@@ -2,6 +2,9 @@
 
 This is the pytorch code for the paper [Unsupervised Learning of Compositional Energy Concepts](https://arxiv.org/abs/2111.03042).
 
+<p align="center">
+  <img src="assets/comet.gif" width="80%"/>
+</p>
 
 ## Demo
 
