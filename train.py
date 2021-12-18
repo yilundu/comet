@@ -383,7 +383,7 @@ def train(train_dataloader, test_dataloader, logger, models, optimizers, FLAGS, 
                 kvs['ml_loss'] = ml_loss.item()
                 kvs['im_loss'] = im_loss.item()
 
-                if FLAGS.dataset == "celebahq_128":
+                if FLAGS.dataset == "celebahq_128" and ('vgg_loss' in kvs):
                     kvs['vgg_loss'] = vgg_loss.item()
 
                 kvs['energy_pos_mean'] = energy_pos_mean
