@@ -33,7 +33,7 @@ python train.py --exp=celebahq_128 --batch_size=12 --gpus=1 --cuda --train --dat
 Please utilize the following command to run  local factor decomposition on CLEVR
 
 ```
-python train.py --exp=clevr_local_decomp --num_steps=5 --step_lr=1000.0 --components=4 --dataset=clevr --cuda --train --batch_size=24 --latent_dim=16 --recurrent_model --pos_embed
+python train.py --exp=clevr_local_decomp --num_steps=5 --step_lr=1000.0 --components=5 --dataset=clevr --cuda --train --batch_size=24 --latent_dim=16 --recurrent_model --pos_embed
 ```
 
 # Dataset Download
