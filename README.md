@@ -11,7 +11,7 @@ This is the pytorch code for the paper [Unsupervised Learning of Compositional E
 Please download a pretrained model at this [link](https://www.dropbox.com/s/tld530rrpqxdif3/celebahq_128.pth?dl=0) and then execute the following code to test a pretrained CelebA-HQ 128x128 COMET model
 
 ```
-python demo.py im_path=im0.png
+python demo.py --im_path=im0.jpg
 ```
 
 # Global Factor Decomposition
